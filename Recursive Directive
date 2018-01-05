@@ -1,0 +1,73 @@
+<!doctype html>
+<html><head>
+<title> Recursive Directive </title>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script >
+var app = angular.module("myApp", []);
+var Ctrlrfun = function($scope) {
+	
+        $scope.objectAdmin =[
+	{"name":"bankinfo","displayName":"Bank Info","type":"object","objectDefinition":[{
+		"name":"name","displayName":"Bank Name","type":"string"},
+		{"name":"mainPhone","displayName":"Main Phone","type":"string"},
+			{"name":"contact","displayName":"Contact","type":"object","objectDefinition":[
+				{"name":"name","displayName":"Name","type":"string"},
+				{"name":"title","displayName":"Title","type":"string"}]
+		}]
+	}];
+      $scope.obj=
+	{"bankinfo":{"name":"Chase Bank - Newburgh","mainPhone":"1 (845) 333-3333","contact":
+	{"name":"Donna Shuler","title":"Commercial Accounts Mgr."}}};
+ 
+  }
+
+var dirfun = function () {
+        return {
+           
+           	 scope: {
+                   column: '=',
+		   obj:	'='	
+           		 },
+		 template: `<div>
+  			<h4>{{column.displayName}}:</h4>  			
+   			 	<div ng-if="column.type == 'string'">
+					<div ng-if="column.displayName == 'Bank Name'">
+	  			 	<input type="text" ng-model="obj.bankinfo.name" />
+			 		</div>
+					<div ng-if="column.displayName == 'Main Phone'">
+	  			 	<input type="text" ng-model="obj.bankinfo.mainPhone" />
+			 		</div>
+					<div ng-if="column.displayName == 'Name'">
+	  			 	<input type="text" ng-model="obj.bankinfo.contact.name" />
+			 		</div>
+					<div ng-if="column.displayName == 'Title'">
+	  			 	<input type="text" ng-model="obj.bankinfo.contact.title" />
+			 		</div>
+				
+				</div>
+			 	<div ng-if="column.type == 'object'">
+          				<div ng-repeat="child in column.objectDefinition">
+					<objecteditor column="child" obj="obj"></objecteditor>
+					</div>  
+			 	</div>
+			</div>`,
+            replace: true,
+           
+            link: function (scope, element, attrs) {           
+        
+		}
+        };
+    }
+
+app.directive("objecteditor",dirfun); 
+app.controller('ApplicationController',Ctrlrfun);
+
+</script>
+</head>
+
+<body ng-app='myApp' ng-controller="ApplicationController">
+<h2>Call same directive within itself</h2>
+
+<div ng-repeat="column in objectAdmin">
+ <objecteditor column="column" obj="obj"></objecteditor>
+</div>  </body></html>
