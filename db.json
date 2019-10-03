@@ -8,7 +8,7 @@
     { "id": 1, "body": "some comment", "postId": 1 },
     { "id": 2, "body": "some comment", "postId": 1 }
   ],
-  "profile":[
+  "profiles":[
   {    "id": 1,    "name": "Shankar",    "age": 40  },
   {    "id": 2,    "name": "Aparna",    "age": 33  },
   {    "id": 3,    "name": "Kasi",    "age": 35  },
