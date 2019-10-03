@@ -9,11 +9,11 @@
     { "id": 2, "body": "some comment", "postId": 1 }
   ],
   "profile":[
-  {    "id": 1,    "name": "john",    "age": 21  },
-  {    "id": 2,    "name": "judy",    "age": 31  },
-  {    "id": 3,    "name": "jack",    "age": 41  },
-  {    "id": 4,    "name": "vijay",    "age": 5  },
-  {    "id": 5,    "name": "vaishu",    "age":8  }
+  {    "id": 1,    "name": "Shankar",    "age": 40  },
+  {    "id": 2,    "name": "Aparna",    "age": 33  },
+  {    "id": 3,    "name": "Kasi",    "age": 35  },
+  {    "id": 4,    "name": "Vijay",    "age": 7},
+  {    "id": 5,    "name": "Vaishu",    "age":9  }
 ]
 
 }
